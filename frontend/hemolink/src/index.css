@@ -1,0 +1,511 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  color: #191919;
+  background: #f8f8f8;
+}
+
+button,
+select {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.app {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.map {
+  width: 100%;
+  height: 100%;
+  background: #e8e8e8;
+}
+
+/* Brand */
+.brand {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 1000;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 10px 14px;
+  background: white;
+  border-radius: 14px;
+  box-shadow: 0 4px 20px #00000012;
+}
+
+.brand-icon {
+  display: grid;
+  place-items: center;
+
+  width: 38px;
+  height: 38px;
+  border-radius: 11px;
+
+  background: #c62828;
+  color: white;
+  font-size: 22px;
+  font-weight: 800;
+}
+
+.brand h1 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.brand p {
+  margin: 3px 0 0;
+  color: #777;
+  font-size: 10px;
+}
+
+/* Search panel */
+.search-panel {
+  position: absolute;
+  top: 90px;
+  left: 20px;
+  z-index: 1000;
+
+  width: 340px;
+  padding: 20px;
+
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 6px 30px #00000016;
+}
+
+.panel-heading,
+.results-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.eyebrow {
+  display: block;
+  margin-bottom: 6px;
+  color: #c62828;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.1px;
+}
+
+.panel-heading h2,
+.results-heading h2 {
+  margin: 0;
+  font-size: 20px;
+  letter-spacing: -0.5px;
+}
+
+.search-icon {
+  color: #c62828;
+  font-size: 30px;
+}
+
+.field-label {
+  display: block;
+  margin: 18px 0 9px;
+  color: #555;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.blood-groups {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 7px;
+}
+
+.blood-group {
+  padding: 10px 4px;
+
+  border: 1px solid #e9e9e9;
+  border-radius: 8px;
+
+  background: #fff;
+  color: #555;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.blood-group:hover {
+  border-color: #c62828;
+}
+
+.blood-group.active {
+  border-color: #c62828;
+  background: #fff1f1;
+  color: #c62828;
+}
+
+.units-select {
+  width: 100%;
+  padding: 12px;
+
+  border: 1px solid #e6e6e6;
+  border-radius: 9px;
+
+  background: white;
+  font-size: 13px;
+}
+
+.search-button {
+  width: 100%;
+  margin-top: 15px;
+  padding: 13px;
+
+  border: none;
+  border-radius: 9px;
+
+  background: #c62828;
+  color: white;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.search-button:hover {
+  background: #a91f1f;
+}
+
+.location-button {
+  width: 100%;
+  margin-top: 9px;
+  padding: 10px;
+
+  border: 1px solid #eee;
+  border-radius: 9px;
+
+  background: white;
+  color: #444;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.location-button:hover {
+  background: #fafafa;
+}
+
+.location-button:disabled {
+  cursor: wait;
+  opacity: 0.6;
+}
+
+/* Results */
+.results-panel {
+  position: absolute;
+  top: 90px;
+  right: 20px;
+  z-index: 1000;
+
+  width: 360px;
+  max-height: calc(100vh - 130px);
+  overflow-y: auto;
+
+  padding: 18px;
+
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 6px 30px #00000016;
+}
+
+.result-badge {
+  padding: 8px 11px;
+  border-radius: 9px;
+
+  background: #fff1f1;
+  color: #c62828;
+
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.bank-card {
+  display: block;
+  width: 100%;
+  margin-top: 12px;
+  padding: 13px;
+
+  border: 1px solid #eee;
+  border-radius: 12px;
+
+  background: white;
+  text-align: left;
+
+  transition: border-color 0.15s ease;
+}
+
+.bank-card:hover,
+.bank-card.selected {
+  border-color: #c62828;
+}
+
+.bank-card-top {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.bank-icon {
+  display: grid;
+  place-items: center;
+
+  width: 38px;
+  height: 38px;
+  flex-shrink: 0;
+
+  border-radius: 10px;
+  background: #fff1f1;
+  color: #c62828;
+
+  font-size: 20px;
+}
+
+.bank-info h3 {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.bank-info p {
+  margin: 4px 0 0;
+  color: #777;
+  font-size: 11px;
+}
+
+.bank-card-bottom {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+
+  margin-top: 12px;
+  padding-top: 10px;
+
+  border-top: 1px solid #f1f1f1;
+}
+
+.availability {
+  color: #238447;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.distance {
+  color: #777;
+  font-size: 11px;
+}
+
+.empty-state {
+  margin-top: 18px;
+  color: #777;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.error-message {
+  color: #c62828;
+  font-size: 11px;
+}
+
+/* Map status */
+.map-label {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  z-index: 1000;
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 10px 14px;
+
+  background: white;
+  border-radius: 30px;
+  box-shadow: 0 4px 16px #00000014;
+
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #c62828;
+}
+
+/* Custom Leaflet markers */
+.custom-marker {
+  background: transparent;
+  border: none;
+}
+
+/* Blood bank marker */
+.blood-bank-marker {
+  width: 40px;
+  height: 40px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #c62828;
+  color: white;
+
+  border: 3px solid white;
+  border-radius: 50% 50% 50% 0;
+
+  transform: rotate(-45deg);
+
+  box-shadow: 0 3px 12px #00000030;
+
+  transition:
+    width 0.2s ease,
+    height 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.blood-bank-marker span {
+  font-size: 19px;
+  font-weight: 800;
+  transform: rotate(45deg);
+}
+
+/* Selected blood bank */
+.blood-bank-marker.selected-marker {
+  width: 48px;
+  height: 48px;
+
+  background: #8e1515;
+
+  box-shadow:
+    0 0 0 6px #c6282830,
+    0 5px 16px #00000040;
+
+  animation: markerPulse 1.5s infinite;
+}
+
+.selected-marker span {
+  font-size: 22px;
+}
+
+/* User location */
+.user-location-marker {
+  position: relative;
+
+  width: 40px;
+  height: 40px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Outer pulsing glow */
+.user-location-pulse {
+  position: absolute;
+
+  width: 40px;
+  height: 40px;
+
+  background: #c6282825;
+  border: 1px solid #c6282845;
+  border-radius: 50%;
+
+  animation: locationPulse 2s infinite;
+}
+
+/* Actual location dot */
+.user-location-dot {
+  position: relative;
+  z-index: 2;
+
+  width: 18px;
+  height: 18px;
+
+  background: #c62828;
+  border: 4px solid white;
+  border-radius: 50%;
+
+  box-shadow: 0 2px 8px #00000040;
+}
+
+@keyframes locationPulse {
+  0% {
+    transform: scale(0.7);
+    opacity: 0.8;
+  }
+
+  70% {
+    transform: scale(1.4);
+    opacity: 0.2;
+  }
+
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+
+@keyframes markerPulse {
+  0% {
+    box-shadow:
+      0 0 0 4px #c6282820,
+      0 5px 16px #00000040;
+  }
+
+  50% {
+    box-shadow:
+      0 0 0 9px #c6282810,
+      0 5px 16px #00000040;
+  }
+
+  100% {
+    box-shadow:
+      0 0 0 4px #c6282820,
+      0 5px 16px #00000040;
+  }
+}
+
+/* Responsive */
+@media (max-width: 760px) {
+  .brand {
+    top: 12px;
+    left: 12px;
+  }
+
+  .search-panel {
+    top: 78px;
+    left: 12px;
+    width: calc(100% - 24px);
+    padding: 16px;
+  }
+
+  .results-panel {
+    top: auto;
+    bottom: 12px;
+    right: 12px;
+    width: calc(100% - 24px);
+    max-height: 38vh;
+  }
+
+  .map-label {
+    display: none;
+  }
+}
